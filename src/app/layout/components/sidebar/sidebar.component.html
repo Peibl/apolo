@@ -9,6 +9,9 @@
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Tables' | translate }}
         </a>
+        <a [routerLink]="['/clients']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-users"></i>&nbsp;Clientes
+        </a>
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Forms' | translate }}
         </a>
@@ -42,7 +45,7 @@
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
         </a>
-        <a class="list-group-item more-themes" href="http://www.strapui.com/" >
+        <a class="list-group-item more-themes" href="http://www.strapui.com/">
             {{ 'More Theme' | translate }}
         </a>
         <div class="header-fields">
