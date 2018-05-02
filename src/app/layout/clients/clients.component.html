@@ -24,25 +24,17 @@
                             <th>Domicilio</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <!--<tr>-->
-                            <!--<th scope="row">1</th>-->
-                            <!--<td>Mark</td>-->
-                            <!--<td>Otto</td>-->
-                            <!--<td>@mdo</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th scope="row">2</th>-->
-                            <!--<td>Jacob</td>-->
-                            <!--<td>Thornton</td>-->
-                            <!--<td>@fat</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th scope="row">3</th>-->
-                            <!--<td>Larry</td>-->
-                            <!--<td>the Bird</td>-->
-                            <!--<td>@twitter</td>-->
-                        <!--</tr>-->
+                        <tbody *ngIf="clients?.length>0">
+                        <tr *ngFor="let client of clients;let i=index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{client.name}}</td>
+                            <td>{{client.lastname}}</td>
+                            <td>{{client.phone}}</td>
+                            <td>{{client.phone2}}</td>
+                            <td>{{client.email}}</td>
+                            <td>{{client.address}}</td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -62,50 +54,50 @@
     </div>
     <div class="modal-body">
         <!--<form>-->
-            <!--<div class="form-group">-->
-                <!--<label for="formGroupExampleInput">Nombre</label>-->
-                <!--<input type="text" class="form-control" id="formGroupExampleInput" >-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="formGroupExampleInput2">Apellido</label>-->
-                <!--<input type="text" class="form-control" id="formGroupExampleInput2">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="exampleFormControlInput1">Email</label>-->
-                <!--<input type="email" class="form-control" id="exampleFormControlInput1" >-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="formGroupExampleInput2">Telefono</label>-->
-                <!--<input type="text" class="form-control" id="phone">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="formGroupExampleInput2">Telefono 2</label>-->
-                <!--<input type="text" class="form-control" id="phone2">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="exampleFormControlSelect1">Example select</label>-->
-                <!--<select class="form-control" id="exampleFormControlSelect1">-->
-                    <!--<option>1</option>-->
-                    <!--<option>2</option>-->
-                    <!--<option>3</option>-->
-                    <!--<option>4</option>-->
-                    <!--<option>5</option>-->
-                <!--</select>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="exampleFormControlSelect2">Example multiple select</label>-->
-                <!--<select multiple class="form-control" id="exampleFormControlSelect2">-->
-                    <!--<option>1</option>-->
-                    <!--<option>2</option>-->
-                    <!--<option>3</option>-->
-                    <!--<option>4</option>-->
-                    <!--<option>5</option>-->
-                <!--</select>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label for="exampleFormControlTextarea1">Example textarea</label>-->
-                <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
-            <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="formGroupExampleInput">Nombre</label>-->
+        <!--<input type="text" class="form-control" id="formGroupExampleInput" >-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="formGroupExampleInput2">Apellido</label>-->
+        <!--<input type="text" class="form-control" id="formGroupExampleInput2">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="exampleFormControlInput1">Email</label>-->
+        <!--<input type="email" class="form-control" id="exampleFormControlInput1" >-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="formGroupExampleInput2">Telefono</label>-->
+        <!--<input type="text" class="form-control" id="phone">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="formGroupExampleInput2">Telefono 2</label>-->
+        <!--<input type="text" class="form-control" id="phone2">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="exampleFormControlSelect1">Example select</label>-->
+        <!--<select class="form-control" id="exampleFormControlSelect1">-->
+        <!--<option>1</option>-->
+        <!--<option>2</option>-->
+        <!--<option>3</option>-->
+        <!--<option>4</option>-->
+        <!--<option>5</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="exampleFormControlSelect2">Example multiple select</label>-->
+        <!--<select multiple class="form-control" id="exampleFormControlSelect2">-->
+        <!--<option>1</option>-->
+        <!--<option>2</option>-->
+        <!--<option>3</option>-->
+        <!--<option>4</option>-->
+        <!--<option>5</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="exampleFormControlTextarea1">Example textarea</label>-->
+        <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+        <!--</div>-->
         <!--</form>-->
         <form>
             <div class="form-row">

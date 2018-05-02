@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../router.animations';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FirebaseService} from '../../shared/services/firebase.service';
+import {Client} from '../../models/client';
 
 @Component({
     selector: 'app-clients',
@@ -9,10 +11,15 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
     animations: [routerTransition()]
 })
 export class ClientsComponent implements OnInit {
-    constructor(private modalService: NgbModal) {
+    clients: Client[];
+
+    constructor(private modalService: NgbModal, public firebaseservice: FirebaseService) {
     }
 
     ngOnInit() {
+        this.firebaseservice.getClients().subscribe(clients => {
+            this.clients = clients;
+        });
     }
 
 
