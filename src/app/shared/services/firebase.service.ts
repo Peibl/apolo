@@ -9,8 +9,16 @@ export class FirebaseService {
     clients: Observable<Client[]>;
 
     constructor(public afs: AngularFirestore) {
-        this.clients = this.afs.collection('clients').valueChanges();
+        // this.clients = this.afs.collection('clients').valueChanges();
+        this.clients = this.afs.collection('clients').snapshotChanges().map(changes => {
+            return changes.map(a => {
+                const data = a.payload.doc.data() as Client;
+                data.id = a.payload.doc.id;
+                return data;
+            });
+        });
     }
+
     getClients() {
         return this.clients;
     }
