@@ -5,20 +5,22 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {BsComponentRoutingModule} from './bs-component-routing.module';
 import {BsComponentComponent} from './bs-component.component';
+import {ModalModule} from 'ngx-bootstrap/modal';
+
 import {
     AlertComponent,
     ButtonsComponent,
-    ModalComponent,
     CollapseComponent,
     DatePickerComponent,
     DropdownComponent,
+    ModalComponent,
     PaginationComponent,
     PopOverComponent,
     ProgressbarComponent,
-    TabsComponent,
     RatingComponent,
-    TooltipComponent,
-    TimepickerComponent
+    TabsComponent,
+    TimepickerComponent,
+    TooltipComponent
 } from './components';
 import {PageHeaderModule} from '../../shared';
 import {GenericValidatorComponent} from './components/generic-validator/generic-validator.component';
@@ -30,6 +32,7 @@ import {GenericValidatorComponent} from './components/generic-validator/generic-
         FormsModule,
         ReactiveFormsModule,
         NgbModule.forRoot(),
+        ModalModule.forRoot(),
         PageHeaderModule
     ],
     declarations: [
@@ -49,7 +52,7 @@ import {GenericValidatorComponent} from './components/generic-validator/generic-
         TimepickerComponent,
         GenericValidatorComponent
     ],
-    exports: [GenericValidatorComponent]
+    exports: [GenericValidatorComponent, ModalModule]
 })
 export class BsComponentModule {
 }

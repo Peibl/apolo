@@ -1,4 +1,3 @@
-
 export interface Client {
     id?: string;
     name?: string;
@@ -7,6 +6,5 @@ export interface Client {
     phone2?: string;
     email?: string;
     address?: string;
-
 
 }

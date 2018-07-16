@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Client} from '../../models/client';
 import {Observable} from 'rxjs/Observable';
 
@@ -7,10 +7,11 @@ import {Observable} from 'rxjs/Observable';
 export class FirebaseService {
     clientCollection: AngularFirestoreCollection<Client>;
     clients: Observable<Client[]>;
+    clientDoc: AngularFirestoreDocument<Client>;
 
     constructor(public afs: AngularFirestore) {
-        // this.clients = this.afs.collection('clients').valueChanges();
-        this.clients = this.afs.collection('clients').snapshotChanges().map(changes => {
+        this.clientCollection = this.afs.collection('clients');
+        this.clients = this.clientCollection.snapshotChanges().map(changes => {
             return changes.map(a => {
                 const data = a.payload.doc.data() as Client;
                 data.id = a.payload.doc.id;
@@ -21,6 +22,15 @@ export class FirebaseService {
 
     getClients() {
         return this.clients;
+    }
+
+    addClient(client: Client) {
+        this.clientCollection.add(client);
+    }
+
+    deleteClient(client: Client) {
+        this.clientDoc = this.afs.doc(`clients/${client.id}`);
+        this.clientDoc.delete();
     }
 
 }
