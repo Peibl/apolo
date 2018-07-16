@@ -1,0 +1,38 @@
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FirebaseService} from '../../../../shared/services/firebase.service';
+
+@Component({
+    selector: 'app-new-client-form',
+    templateUrl: './new-client-form.component.html',
+    styleUrls: ['./new-client-form.component.scss']
+})
+export class NewClientFormComponent implements OnInit {
+    form: FormGroup;
+    labelClass = 'col-sm-3 control-label';
+    inputClass = 'col-sm-9';
+
+    constructor(public formBuilder: FormBuilder, public firebaseservice: FirebaseService) {
+    }
+
+    ngOnInit() {
+        this.form = this.formBuilder.group({
+            name: ['', [Validators.required]],
+            lastname: ['', [Validators.required]],
+            phone: ['', [Validators.required]],
+            phone2: ['', [Validators.required]],
+            email: ['', [Validators.required]],
+            address: ['', [Validators.required]],
+            id: [null, []],
+        });
+    }
+
+    save() {
+        console.log(this.form);
+
+    }
+
+    get control() {
+        return this.form.get('name');
+    }
+}

@@ -1,0 +1,49 @@
+<div>
+    <form (ngSubmit)="save()" [formGroup]="form" class="form-horizontal">
+
+        <app-generic-validator [title]="'Nombre'" [form]="form"
+                               [controlName]="'name'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="name" type="text" class="form-control">
+        </app-generic-validator>
+
+        <app-generic-validator [title]="'Apellido'" [form]="form"
+                               [controlName]="'lastname'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="lastname" type="text" class="form-control">
+        </app-generic-validator>
+
+        <app-generic-validator [title]="'Telefono'" [form]="form"
+                               [controlName]="'phone'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="phone" type="text" class="form-control">
+        </app-generic-validator>
+
+        <app-generic-validator [title]="'Telefono 2'" [form]="form"
+                               [controlName]="'phone2'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="phone2" type="text" class="form-control">
+        </app-generic-validator>
+
+        <app-generic-validator [title]="'Email'" [form]="form"
+                               [controlName]="'email'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="email" type="text" class="form-control">
+        </app-generic-validator>
+
+        <app-generic-validator [title]="'Direccion'" [form]="form"
+                               [controlName]="'address'" [labelClass]="labelClass"
+                               [inputClass]="inputClass">
+            <input formControlName="address" type="text" class="form-control">
+        </app-generic-validator>
+
+        <div class="form-group">
+            <div class="modal-footer">
+                <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+

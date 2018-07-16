@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+    <div class="form-group" [class.has-error]="control.invalid && (control.dirty || control.touched)">
+        <label class="{{labelClass}}">{{title}}</label>
+        <div class="{{inputClass}}">
+            <ng-content></ng-content>
+            <div *ngIf="control.invalid && (control.dirty || control.touched)" class="error down-error">
+                <div *ngIf="control.errors.required">
+                    {{errorMesagge}}
+                </div>
+                <div *ngIf="control.errors.exist">
+                    Valor duplicado
+                </div>
+                <div *ngIf="control.errors.max">
+                    Valor maximo alcanzado
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

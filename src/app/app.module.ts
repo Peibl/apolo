@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -13,6 +13,7 @@ import {FirebaseService} from './shared/services/firebase.service';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {ReactiveFormsModule} from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -29,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase, 'apoli'),
         AngularFirestoreModule,
+        ReactiveFormsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -40,7 +42,8 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     declarations: [AppComponent],
     providers: [AuthGuard, FirebaseService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [ReactiveFormsModule]
 })
 export class AppModule {
 }
