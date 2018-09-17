@@ -13,6 +13,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 export class ClientsComponent implements OnInit {
     clients: Client[];
     modalRef: BsModalRef;
+    clientRequest;
 
     constructor(private modalService: BsModalService, public firebaseservice: FirebaseService) {
     }
@@ -24,16 +25,30 @@ export class ClientsComponent implements OnInit {
     }
 
 
-    open(content) {
+    onNewClient(content) {
+        this.clientRequest = new Client();
         this.modalRef = this.modalService.show(content);
     }
 
-    onSave() {
+    onSave(event) {
+        if (event.id === null) {
+
+            this.firebaseservice.addClient(event);
+        } else {
+            console.log('edicion');
+        }
+
+
         this.modalRef.hide();
     }
 
     delete(event) {
         this.firebaseservice.deleteClient(event);
+    }
+
+    onEdit(event, content) {
+        this.clientRequest = event;
+        this.modalRef = this.modalService.show(content);
     }
 
 }

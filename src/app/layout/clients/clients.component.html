@@ -5,7 +5,8 @@
             <div class="card mb-12">
                 <div class="card-header">
                     Clientes
-                    <button class="btn btn-sm  btn-primary pull-right" (click)="open(content)">Nuevo cliente</button>
+                    <button class="btn btn-sm  btn-primary pull-right" (click)="onNewClient(content)">Nuevo cliente
+                    </button>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table">
@@ -18,10 +19,11 @@
                             <th>Telefono 2</th>
                             <th>Email</th>
                             <th>Domicilio</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody *ngIf="clients?.length>0">
-                        <tr *ngFor="let client of clients;let i=index"  >
+                        <tr *ngFor="let client of clients;let i=index">
                             <th scope="row">{{i+1}}</th>
                             <td>{{client.id}}</td>
                             <td>{{client.lastname}}</td>
@@ -29,7 +31,12 @@
                             <td>{{client.phone2}}</td>
                             <td>{{client.email}}</td>
                             <td>{{client.address}}</td>
-                            <td><button class="btn btn-danger" (click)="delete(client)"> Borrar</button></td>
+                            <td>
+                                <button class="btn btn-danger" (click)="delete(client)"> Borrar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" (click)="onEdit(client,content)"> Editar</button>
+                            </td>
                         </tr>
 
                         </tbody>
@@ -50,6 +57,6 @@
         </button>
     </div>
     <div class="modal-body">
-        <app-new-client-form (onSave)="onSave()"></app-new-client-form>
+        <app-new-client-form [client]="clientRequest" (onSave)="onSave($event)"></app-new-client-form>
     </div>
 </ng-template>

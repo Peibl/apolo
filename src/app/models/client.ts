@@ -1,5 +1,5 @@
-export interface Client {
-    id?: string;
+export class Client {
+    id?: string = null;
     name?: string;
     lastname?: string;
     phone?: string;
