@@ -1,0 +1,21 @@
+<div>
+    <app-page-header [heading]="'Formularios'" [icon]="'fa-users'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">
+                    Formularios
+                    <a [routerLink]="['/formularios']" class="btn btn-sm  btn-primary pull-right">
+                        Volver a lista formularios
+                    </a>
+                </div>
+                <div class="card-body table-responsive">
+                    <form-builder [form]="form" (change)="onChange($event)"></form-builder>
+                    <div class="well jsonviewer">
+                        <pre id="json"><code class="language-json" #json></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,7 +24,6 @@ export class ClientsComponent implements OnInit {
         });
     }
 
-
     onNewClient(content) {
         this.clientRequest = new Client();
         this.modalRef = this.modalService.show(content);
@@ -32,13 +31,10 @@ export class ClientsComponent implements OnInit {
 
     onSave(event) {
         if (event.id === null) {
-
             this.firebaseservice.addClient(event);
         } else {
-            console.log('edicion');
+            this.firebaseservice.updateClient(event);
         }
-
-
         this.modalRef.hide();
     }
 

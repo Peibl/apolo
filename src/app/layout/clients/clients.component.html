@@ -25,7 +25,7 @@
                         <tbody *ngIf="clients?.length>0">
                         <tr *ngFor="let client of clients;let i=index">
                             <th scope="row">{{i+1}}</th>
-                            <td>{{client.id}}</td>
+                            <td>{{client.name}}</td>
                             <td>{{client.lastname}}</td>
                             <td>{{client.phone}}</td>
                             <td>{{client.phone2}}</td>
@@ -43,9 +43,7 @@
                     </table>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 

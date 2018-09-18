@@ -1,0 +1,39 @@
+<div>
+    <app-page-header [heading]="'Formularios'" [icon]="'fa-users'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">
+                    Formularios
+                    <a [routerLink]="['/formularios/new']" class="btn btn-sm  btn-primary pull-right">
+                        Nuevo Formulario
+                    </a>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf="formularios?.length>0">
+                        <tr *ngFor="let formulario of formularios;let i=index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{formulario.name}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="delete(formulario)"> Borrar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" (click)="onEdit(formulario)"> Editar</button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

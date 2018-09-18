@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './layout.component';
-import {ClientsComponent} from './clients/clients.component';
 
 const routes: Routes = [
     {
@@ -18,7 +17,7 @@ const routes: Routes = [
             {path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule'},
             {path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule'},
             {path: 'clients', loadChildren: './clients/clients.module#ClientsModule'},
-            // {path: 'clients', component: ClientsComponent}
+            {path: 'formularios', loadChildren: './formularios/formularios.module#FormulariosModule'},
         ]
     }
 ];
