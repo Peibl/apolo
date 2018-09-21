@@ -28,4 +28,8 @@ export class FormularioContainerComponent implements OnInit {
 
     }
 
+    onSubmit(event) {
+        console.log(event);
+    }
+
 }
