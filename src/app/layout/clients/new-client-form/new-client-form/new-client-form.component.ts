@@ -15,7 +15,7 @@ export class NewClientFormComponent implements OnInit {
     @Input() client: Client;
     @Output() onSave = new EventEmitter<any>();
 
-    constructor(public formBuilder: FormBuilder, public firebaseservice: FirebaseService) {
+    constructor(public formBuilder: FormBuilder) {
     }
 
     ngOnInit() {

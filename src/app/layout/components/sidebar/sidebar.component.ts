@@ -1,18 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {GenericService} from '../../../shared/services/generic.service';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss']
+    styleUrls: ['./sidebar.component.scss'],
+    providers: [GenericService]
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
+    formularios;
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router, public genericService: GenericService) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -26,6 +30,17 @@ export class SidebarComponent {
             ) {
                 this.toggleSidebar();
             }
+        });
+
+
+    }
+
+    ngOnInit(): void {
+        console.log('on init sidebar');
+        this.genericService.init('formularios');
+        this.genericService.getEntitys().subscribe(response => {
+            this.formularios = response;
+            console.log(this.formularios);
         });
     }
 

@@ -10,9 +10,24 @@
                     </a>
                 </div>
                 <div class="card-body table-responsive">
-                    <form-builder [form]="form" (change)="onChange($event)"></form-builder>
+                    <form (ngSubmit)="save()" [formGroup]="form" class="form-horizontal">
+
+                        <app-generic-validator [title]="'Nombre'" [form]="form"
+                                               [controlName]="'name'" [labelClass]="labelClass"
+                                               [inputClass]="inputClass">
+                            <input formControlName="name" type="text" class="form-control">
+                        </app-generic-validator>
+
+                        <div class="form-group">
+                            <div class="modal-footer">
+                                <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form-builder [form]="formFormio" (change)="onChange($event)"></form-builder>
                     <div class="well jsonviewer">
-                        <pre id="json"><code class="language-json" #json></code></pre>
+                    <pre id="json"><code class="language-json" #json></code></pre>
                     </div>
                 </div>
             </div>

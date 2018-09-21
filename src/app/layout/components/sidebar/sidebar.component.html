@@ -15,6 +15,13 @@
         <a [routerLink]="['/formularios']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-users"></i>&nbsp;Formularios
         </a>
+
+        <a *ngFor="let formulario of formularios" [routerLink]="['/formularios/container/'+formulario.id]"
+           [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-users"></i>&nbsp;{{formulario.name}}
+        </a>
+
+
         <!--<a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
         <!--<i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Forms' | translate }}-->
         <!--</a>-->
