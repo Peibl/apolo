@@ -25,18 +25,23 @@ export class FormulatiosFormComponent implements OnInit {
         this.genericService.init('formularios');
         this.form = this.formBuilder.group({
             name: ['', [Validators.required]],
+            form_components: ['', []],
         });
 
     }
 
     save() {
+        console.log(this.form.value);
         this.genericService.addEntity(this.form.value);
     }
 
 
     onChange(event) {
-        this.jsonElement.nativeElement.innerHTML = '';
-        this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(event.form, null, 4)));
+        console.log(event);
+        console.log(event.form);
+        this.form.get('form_components').setValue(event.form);
+        // this.jsonElement.nativeElement.innerHTML = '';
+        // this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(event.form, null, 4)));
     }
 
 }

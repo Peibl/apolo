@@ -36,11 +36,9 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('on init sidebar');
         this.genericService.init('formularios');
         this.genericService.getEntitys().subscribe(response => {
             this.formularios = response;
-            console.log(this.formularios);
         });
     }
 

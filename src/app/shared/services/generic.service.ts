@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class GenericService {
-   private entityCollection: AngularFirestoreCollection<any>;
-   private  entityDoc: AngularFirestoreDocument<any>;
-   private path;
+    private entityCollection: AngularFirestoreCollection<any>;
+    private entityDoc: AngularFirestoreDocument<any>;
+    private path;
 
     constructor(public afs: AngularFirestore) {
 
@@ -33,11 +34,24 @@ export class GenericService {
     deleteEntity(entity: any) {
         this.entityDoc = this.afs.doc(this.path + `/${entity.id}`);
         this.entityDoc.delete();
+
     }
+
+    getEntityById(id: any) {
+        return this.entityCollection.doc(id).snapshotChanges().pipe(
+            map(a => {
+                const data = a.payload.data();
+                data.id = a.payload.id;
+                return data;
+            })
+        );
+    }
+
 
     updateEntity(entity: any) {
         this.entityDoc = this.afs.doc(this.path + `/${entity.id}`);
         this.entityDoc.update(entity);
     }
+
 
 }
