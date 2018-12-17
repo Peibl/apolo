@@ -21,7 +21,6 @@ export class FormularioContainerComponent implements OnInit {
             this.paramId = params['id'];
             this.genericService.init('formularios');
             this.genericService.getEntityById(this.paramId).subscribe(res => {
-                console.log(res);
                 this.formulario = res;
             });
         });
