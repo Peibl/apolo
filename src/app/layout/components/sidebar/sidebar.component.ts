@@ -11,16 +11,16 @@ import {GenericService} from '../../../shared/services/generic.service';
 })
 export class SidebarComponent implements OnInit {
 
-    isActive: boolean = false;
-    showMenu: string = '';
-    pushRightClass: string = 'push-right';
+    isActive = false;
+    showMenu = '';
+    pushRightClass = 'push-right';
     formularios;
 
     constructor(private translate: TranslateService, public router: Router, public genericService: GenericService) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
+        // this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
 
         this.router.events.subscribe(val => {
             if (
@@ -37,9 +37,9 @@ export class SidebarComponent implements OnInit {
 
     ngOnInit(): void {
         this.genericService.init('formularios');
-        this.genericService.getEntitys().subscribe(response => {
-            this.formularios = response;
-        });
+        // this.genericService.getEntitys().subscribe(response => {
+        //     this.formularios = response;
+        // });
     }
 
     eventCalled() {

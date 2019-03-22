@@ -15,9 +15,9 @@ export class FormulariosComponent implements OnInit {
 
     ngOnInit() {
         this.genericService.init('formularios');
-        this.genericService.getEntitys().subscribe(formularios => {
-            this.formularios = formularios;
-        });
+        // this.genericService.getEntitys().subscribe(formularios => {
+        //     this.formularios = formularios;
+        // });
     }
 
     onNewFormulario() {

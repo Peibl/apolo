@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs/index';
 
 @Injectable()
 export class GenericService {
@@ -18,13 +19,14 @@ export class GenericService {
     }
 
     getEntitys() {
-        return this.entityCollection.snapshotChanges().map(changes => {
-            return changes.map(a => {
-                const data = a.payload.doc.data();
-                data.id = a.payload.doc.id;
-                return data;
-            });
-        });
+        // return new Observable();
+        // return this.entityCollection.snapshotChanges().map(changes => {
+        //     return changes.map(a => {
+        //         const data = a.payload.doc.data();
+        //         data.id = a.payload.doc.id;
+        //         return data;
+        //     });
+        // });
     }
 
     addEntity(entity: any) {
@@ -41,7 +43,7 @@ export class GenericService {
         return this.entityCollection.doc(id).snapshotChanges().pipe(
             map(a => {
                 const data = a.payload.data();
-                data.id = a.payload.id;
+                // data.id = a.payload.id;
                 return data;
             })
         );

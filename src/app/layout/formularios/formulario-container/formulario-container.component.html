@@ -6,11 +6,13 @@
                 <div class="card-header">
                     {{formulario?.name}}
                     <!--<a [routerLink]="['/formularios']" class="btn btn-sm  btn-primary pull-right">-->
-                        <!--Volver a lista formularios-->
+                    <!--Volver a lista formularios-->
                     <!--</a>-->
                 </div>
+
+                <p>{{formulario | json}}</p>
                 <div class="card-body table-responsive">
-                    <formio [form]="formulario?.form_components"  (submit)="onSubmit($event)"></formio>
+                    <formio [form]="formulario?.form_components" (submit)="onSubmit($event)"></formio>
 
                 </div>
             </div>
