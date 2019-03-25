@@ -20,9 +20,9 @@ export class FormularioContainerComponent implements OnInit {
         this.activatedRoute.params.forEach((params: Params) => {
             this.paramId = params['id'];
             this.genericService.init('formularios');
-            this.genericService.getEntityById(this.paramId).subscribe(res => {
-                this.formulario = res;
-            });
+            // this.genericService.getEntityById(this.paramId).subscribe(res => {
+            //     this.formulario = res;
+            // });
         });
 
     }

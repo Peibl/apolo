@@ -10,7 +10,8 @@ export class FirebaseService {
     clientDoc: AngularFirestoreDocument<Client>;
 
     constructor(public afs: AngularFirestore) {
-        this.clientCollection = this.afs.collection('clients');
+        // this.clientCollection = this.afs.collection('clients');
+        // this.afs.collection('clients').valueChanges();
         // this.clients = this.clientCollection.snapshotChanges().map(changes => {
         //     return changes.map(a => {
         //         const data = a.payload.doc.data() as Client;

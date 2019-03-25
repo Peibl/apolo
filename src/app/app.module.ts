@@ -11,12 +11,11 @@ import {AppComponent} from './app.component';
 import {AuthGuard} from './shared';
 import {FirebaseService} from './shared/services/firebase.service';
 import {AngularFireModule} from 'angularfire2';
-import {environment} from '../environments/environment';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormioModule} from 'angular-formio';
 import {TableModule} from 'primeng/table';
 import {DropdownModule, MultiSelectModule} from 'primeng/primeng';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -25,14 +24,22 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+const config = {
+    apiKey: 'AIzaSyCj77Z_Fj_btuOsG32pIJAxvXTPRevufQ0',
+    authDomain: 'apoli-a6de4.firebaseapp.com',
+    databaseURL: 'https://apoli-a6de4.firebaseio.com',
+    storageBucket: 'apoli-a6de4.appspot.com\'',
+    messagingSenderId: '569193565235'
+};
+
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        AngularFireModule.initializeApp(environment.firebase, 'apoli'),
-        AngularFirestoreModule,
+        AngularFireModule.initializeApp(config),
+        AngularFireDatabaseModule,
         ReactiveFormsModule,
         TranslateModule.forRoot({
             loader: {

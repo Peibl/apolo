@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../router.animations';
-import {FirebaseService} from '../../shared/services/firebase.service';
 import {Client} from '../../models/client';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
     selector: 'app-clients',
@@ -11,17 +11,18 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
     animations: [routerTransition()]
 })
 export class ClientsComponent implements OnInit {
-    clients: Client[];
+    clients;
     modalRef: BsModalRef;
     clientRequest;
 
-    constructor(private modalService: BsModalService, public firebaseservice: FirebaseService) {
+    constructor(private modalService: BsModalService, db: AngularFireDatabase) {
+        this.clients = db.object('clients').valueChanges();
     }
 
     ngOnInit() {
-        this.firebaseservice.getClients().subscribe(clients => {
-            this.clients = clients;
-        });
+        // this.firebaseservice.getClients().subscribe(clients => {
+        //     this.clients = clients;
+        // });
     }
 
     onNewClient(content) {
@@ -30,16 +31,16 @@ export class ClientsComponent implements OnInit {
     }
 
     onSave(event) {
-        if (event.id === null) {
-            this.firebaseservice.addClient(event);
-        } else {
-            this.firebaseservice.updateClient(event);
-        }
+        // if (event.id === null) {
+        //     this.firebaseservice.addClient(event);
+        // } else {
+        //     this.firebaseservice.updateClient(event);
+        // }
         this.modalRef.hide();
     }
 
     delete(event) {
-        this.firebaseservice.deleteClient(event);
+        // this.firebaseservice.deleteClient(event);
     }
 
     onEdit(event, content) {
