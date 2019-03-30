@@ -41,6 +41,9 @@ export class FormulatiosFormComponent implements OnInit {
                     this.formFormio = this.formulario.form_components;
                     this.form.get('name').setValue(this.formulario.name);
                     this.form.get('id').setValue(this.formulario.id);
+                    this.form.get('form_components').setValue(this.formulario.form_components);
+                    console.log(this.formulario);
+                    console.log(this.form.value);
                 });
             }
         });
@@ -52,6 +55,7 @@ export class FormulatiosFormComponent implements OnInit {
         if (this.paramId === 'new') {
             this.genericService.addEntity(this.form.value);
         } else {
+            console.log(this.form.value);
             this.genericService.updateEntity(this.form.value);
         }
         this.router.navigate(['/formularios']);
