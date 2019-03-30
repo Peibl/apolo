@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GenericService} from '../../shared/services/generic.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-formularios',
@@ -10,7 +11,7 @@ import {GenericService} from '../../shared/services/generic.service';
 export class FormulariosComponent implements OnInit {
     formularios = [];
 
-    constructor(public genericService: GenericService) {
+    constructor(public genericService: GenericService, private router: Router) {
     }
 
     ngOnInit() {
@@ -28,6 +29,7 @@ export class FormulariosComponent implements OnInit {
         this.genericService.deleteEntity(formulario);
     }
 
-    onEdit(formulatio) {
+    onEdit(formulario) {
+        this.router.navigate(['/formularios/', formulario.id]);
     }
 }

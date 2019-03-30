@@ -10,7 +10,7 @@ const routes: Routes = [
         component: FormulariosComponent
     },
     {
-        path: 'new',
+        path: ':id',
         component: FormulatiosFormComponent
     },
     {
