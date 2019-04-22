@@ -7,8 +7,9 @@ import {LayoutRoutingModule} from './layout-routing.module';
 import {LayoutComponent} from './layout.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {HeaderComponent} from './components/header/header.component';
-import { FormulariosComponent } from './formularios/formularios.component';
 import {FormioModule} from 'angular-formio';
+import {TableModule} from 'primeng/table';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -16,7 +17,10 @@ import {FormioModule} from 'angular-formio';
         LayoutRoutingModule,
         TranslateModule,
         NgbDropdownModule.forRoot(),
-        FormioModule
+        FormioModule,
+        TableModule,
+        FormsModule
+
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })

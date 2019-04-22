@@ -21,7 +21,10 @@ export class FormulatiosFormComponent implements OnInit {
     form: FormGroup;
     paramId;
 
-    constructor(public genericService: GenericService, public formBuilder: FormBuilder, public activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(public genericService: GenericService,
+                public formBuilder: FormBuilder,
+                public activatedRoute: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit() {

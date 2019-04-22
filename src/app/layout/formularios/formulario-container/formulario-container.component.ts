@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {GenericService} from '../../../shared/services/generic.service';
+import {TableModule} from 'primeng/table';
 
 @Component({
     selector: 'app-formulario-container',
@@ -12,6 +13,8 @@ import {GenericService} from '../../../shared/services/generic.service';
 export class FormularioContainerComponent implements OnInit {
     paramId = 0;
     formulario;
+    cars = [];
+    cols = [];
 
     constructor(private activatedRoute: ActivatedRoute, public genericService: GenericService) {
     }
@@ -22,6 +25,11 @@ export class FormularioContainerComponent implements OnInit {
             this.genericService.init('formularios');
             this.genericService.getEntityById(this.paramId).subscribe(res => {
                 this.formulario = res;
+                console.log(this.formulario);
+                this.cols = this.formulario.form_components.components.map(value => {
+                    return {header: value.label, field: value.key};
+                });
+                console.log(this.cols);
             });
         });
 

@@ -13,8 +13,9 @@ import {FirebaseService} from './shared/services/firebase.service';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FormioModule} from 'angular-formio';
+import {TableModule} from 'primeng/table';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -40,12 +41,14 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         AppRoutingModule,
-        FormioModule
+        FormioModule,
+        TableModule,
+        FormsModule
     ],
     declarations: [AppComponent],
     providers: [AuthGuard, FirebaseService],
     bootstrap: [AppComponent],
-    exports: [ReactiveFormsModule, FormioModule]
+    exports: [ReactiveFormsModule, FormioModule, TableModule, FormsModule]
 })
 export class AppModule {
 }
